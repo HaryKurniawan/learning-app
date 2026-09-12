@@ -1,0 +1,6 @@
+{
+  "name": "Niits Knowledge",
+  "description": "Sub-domain mockup for Niits containing articles, blogs, and premium courses/bootcamps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
