@@ -35,56 +35,56 @@ export const CourseDetail = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-20">
+    <div className="bg-white min-h-screen pb-20">
       {/* Hero Section */}
-      <div className="bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+      <div className="bg-gradient-to-b from-blue-50 to-white pt-24 pb-12 sm:pt-32 sm:pb-16 border-b border-blue-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <button 
             onClick={() => navigate(-1)} 
-            className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
+            className="flex items-center gap-2 text-slate-500 hover:text-blue-600 font-medium transition-colors mb-8"
           >
             <ChevronLeft className="w-5 h-5" />
             Kembali
           </button>
           
-          <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="flex flex-col md:flex-row gap-10 items-start">
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                <span className={`px-3 py-1 border rounded-full text-xs font-semibold uppercase tracking-wider ${course.type === 'bootcamp' ? 'bg-amber-500/20 text-amber-300 border-amber-500/30' : 'bg-blue-600/20 text-blue-300 border-blue-500/30'}`}>
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${course.type === 'bootcamp' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'}`}>
                   {course.type === 'bootcamp' ? '🔥 Intensive Bootcamp' : '💻 Self-Paced Course'}
                 </span>
-                <span className="px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-full text-xs font-semibold flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5" />
+                <span className="px-4 py-1.5 bg-slate-100 text-slate-600 rounded-full text-xs font-bold flex items-center gap-1.5">
+                  <BookOpen className="w-4 h-4" />
                   {course.modules} Modul
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-5 tracking-tight">
                 {course.title}
               </h1>
-              <p className="text-lg text-slate-300 mb-8 max-w-2xl leading-relaxed">
+              <p className="text-lg text-slate-600 mb-8 max-w-2xl leading-relaxed">
                 {course.description}
               </p>
               
-              <div className="flex items-center gap-6 text-sm text-slate-400 font-medium">
+              <div className="flex items-center gap-6 text-sm text-slate-600 font-semibold">
                 <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-emerald-400" /> Akses Selamanya
+                  <Shield className="w-5 h-5 text-blue-500" /> Akses Selamanya
                 </div>
                 <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-amber-400" /> Sertifikat Kelulusan
+                  <Award className="w-5 h-5 text-blue-500" /> Sertifikat Kelulusan
                 </div>
               </div>
             </div>
 
             {/* Floating Action Card */}
-            <div className="w-full md:w-80 bg-white rounded-3xl p-6 shadow-xl border border-slate-200 text-slate-800 md:-mb-24 relative z-10 shrink-0">
-              <div className="aspect-video rounded-2xl overflow-hidden mb-6 bg-slate-100">
+            <div className="w-full md:w-80 bg-white rounded-3xl p-6 shadow-xl shadow-blue-900/5 border border-slate-100 text-slate-800 md:-mb-32 relative z-10 shrink-0">
+              <div className="aspect-video rounded-2xl overflow-hidden mb-6 bg-slate-100 shadow-inner">
                 <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
               </div>
               <div className="mb-6">
-                <p className="text-sm font-medium text-slate-500 mb-1">Investasi Belajar</p>
-                <div className="text-3xl font-bold text-slate-900">
+                <p className="text-sm font-semibold text-slate-500 mb-1">Investasi Belajar</p>
+                <div className="text-3xl font-extrabold text-slate-900">
                   {course.isFree ? (
-                    <span className="text-emerald-600">Gratis</span>
+                    <span className="text-blue-600">Gratis</span>
                   ) : (
                     course.price
                   )}
@@ -92,7 +92,7 @@ export const CourseDetail = () => {
               </div>
               <button 
                 onClick={handleAction}
-                className="w-full py-3.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold shadow-sm transition-colors text-center"
+                className="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-full font-bold shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40 transition-all text-center"
               >
                 {!user ? 'Login untuk Daftar' : (course.isFree ? 'Mulai Belajar Sekarang' : 'Daftar Kelas Ini')}
               </button>

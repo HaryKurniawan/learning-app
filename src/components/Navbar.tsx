@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import { Button } from './Button';
-import { BookOpen, LogOut, User, Menu, X } from 'lucide-react';
+import { BookOpen, LogOut, User, Menu, X, Home, FileText, PenTool, Search, GraduationCap, Rocket } from 'lucide-react';
 
 export const Navbar = () => {
   const { user, logout } = useAuth();
@@ -34,6 +34,9 @@ export const Navbar = () => {
 
   const NavLinks = () => (
     <>
+      <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`block py-2 md:py-0 md:inline-block font-medium transition-colors ${isActive('/') ? 'text-blue-700' : 'text-gray-600 hover:text-blue-600'}`}>
+        Home
+      </Link>
       <Link to="/article" onClick={() => setIsMobileMenuOpen(false)} className={`block py-2 md:py-0 md:inline-block font-medium transition-colors ${isActive('/article') ? 'text-blue-700' : 'text-gray-600 hover:text-blue-600'}`}>
         Article
       </Link>
@@ -57,7 +60,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${showNavbar ? 'bg-white border-b border-gray-200 translate-y-0 opacity-100 shadow-sm' : '-translate-y-full opacity-0'}`}>
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-slate-200' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
@@ -114,14 +117,33 @@ export const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <div className={`fixed inset-y-0 right-0 w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden border-l border-gray-200 flex flex-col shadow-lg ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <span className="font-semibold text-gray-900">Menu</span>
-          <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-500 hover:text-gray-800 p-1">
+        <div className="flex items-center justify-end p-4">
+          <button onClick={() => setIsMobileMenuOpen(false)} className="text-gray-500 hover:text-gray-800 p-1 bg-gray-50 rounded-full">
             <X className="h-6 w-6" />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto p-4 flex flex-col space-y-4">
-          <NavLinks />
+        <div className="flex-1 overflow-y-auto p-4 flex flex-col space-y-2">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <Home className="w-5 h-5" /> Home
+          </Link>
+          <Link to="/article" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/article') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <FileText className="w-5 h-5" /> Article
+          </Link>
+          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/blog') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <PenTool className="w-5 h-5" /> Blog
+          </Link>
+          <Link to="/penelitian" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/penelitian') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <Search className="w-5 h-5" /> Penelitian
+          </Link>
+          <Link to="/knowledge" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/knowledge') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <BookOpen className="w-5 h-5" /> Learning
+          </Link>
+          <Link to="/courses" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/courses') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <GraduationCap className="w-5 h-5" /> Course
+          </Link>
+          <Link to="/bootcamps" onClick={() => setIsMobileMenuOpen(false)} className={`flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-colors ${isActive('/bootcamps') ? 'text-blue-700 bg-blue-50' : 'text-gray-600 hover:text-blue-600 hover:bg-slate-50'}`}>
+            <Rocket className="w-5 h-5" /> Bootcamp
+          </Link>
         </div>
         <div className="p-4 border-t border-gray-200">
           {user ? (
